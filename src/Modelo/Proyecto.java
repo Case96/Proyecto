@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -59,7 +60,9 @@ public class Proyecto {
         this.trabajos = trabajos;
     }
     
-   
+   public boolean Registra (Proyecto trabajos) throws SQLException {
+       
+   }
     
     
 }
