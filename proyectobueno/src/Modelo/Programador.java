@@ -5,7 +5,10 @@
  */
 package Modelo;
 
+import Controlador.Controlador;
+import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,15 +17,58 @@ import java.util.ArrayList;
 public class Programador {
 
     public static int eliminarProgramador(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public static int actualizarDatos(String dni, String nombre, String titulo, String idiomas, String estudios, String cargo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta=" UPDATE ingreso SET Enfermedad='"+enfermedad+"',Medicamento='"+medicamento+
+            "' WHERE Código='"+codigo+"';";
+    
+    int filas_afectadas=0;
+    
+    try{
+         Controlador.getInstance().conectar();
+    Statement stmt =Controlador.getConnection().connection.createStatement();
+     filas_afectadas=stmt.executeUpdate(consulta);
+    
+    }catch(Exception ex) {
+            Logger.getLogger(Medico.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    finally{
+        try {
+            Controlador.getInstance().desconectar();
+        } catch (Exception ex) {
+            Logger.getLogger(Medico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    return filas_afectadas;
     }
 
     public static Boolean registrarProgramador(Programador programador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            Controlador.getInstance().conectar();
+
+            String consulta = "INSERT INTO programador(dni, nombre, titulo, idiomas, estudios, cargo)"+ "VALUES('"+ programador.getDni()+ "','" + programador.getNombre()+ "','"+ programador.getTitulo()+ "','"+ programador.getIdiomas()+ "','"+ programador.getEstudios()+ "','"+ programador.getCargo()+ "')";
+
+            Statement stmt = Controlador.getConnection().getConnection().createStatement();
+            int filas_afectadas = stmt.executeUpdate(consulta);
+            JOptionPane.showMessageDialog(null, "Programador registrado");
+            
+            return true;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ya existe un Progrmador con ese DNI.");
+            return false;
+            
+        } finally {
+            try {
+                Controlador.getInstance().desconectar();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        
     }
     private String dni;
     private String nombre;
@@ -97,5 +143,27 @@ public class Programador {
         this.proyecto= proyecto;
     }
     
-    
+     public static Boolean registrarProgramador(Programador programador) {
+        
+        try {
+            Controlador.getInstance().conectar();
+
+            String consulta = "INSERT INTO programador(dni, nombre, titulo, idiomas, estudios, cargo)"+ "VALUES('"+ programador.getDni()+ "','" + programador.getNombre()+ "','"+ programador.getTitulo()+ "','"+ programador.getIdiomas()+ "','"+ programador.getEstudios()+ "','"+ programador.getCargo()+ "')";
+
+            Statement stmt = Controlador.getConnection().getConnection().createStatement();
+            int filas_afectadas = stmt.executeUpdate(consulta);
+            JOptionPane.showMessageDialog(null, "Programadorregistrado");
+            
+            return true;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese DNI en la base de datos.");
+            return false;
+            
+        } finally {
+            try {
+                Controlador.getInstance().desconectar();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 }
