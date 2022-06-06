@@ -5,11 +5,14 @@
         <group>
             <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Controlador/ControladorProyecto.java</file>
             <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Modelo/TableModelProyecto.java</file>
-            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Controlador/ControladorProgramador.java</file>
+            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Vista/Vista_Proyecto.java</file>
+            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Vista/VistaPrincipal.java</file>
             <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Controlador/ControladoProgramador.java</file>
             <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Modelo/TableModelProgramador.java</file>
             <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Modelo/Programador.java</file>
-            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Vista/Vista_Programador.java</file>
+            <file>file:/C:/Users/Alex/Desktop/proyectobueno/src/Modelo/Proyecto.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import Modelo.Conexion;
@@ -17,22 +12,22 @@ public class Controlador {
     
     public static Controlador getInstance(){
         if (instance == null) {
-            conexion = new Conexion ("localhost","root","","proyecto");
+            conexion = new Conexion ("localhost","root","","control_proyectos");
             instance = new Controlador();
         }
         return instance;   
     }
     
-    public static Conexion getConexion(){
+    public static Conexion getConnection(){
         if (instance == null){
-            conexion = new Conexion ("localhost","root","","proyecto");
+            conexion = new Conexion ("localhost","root","","control_proyectos");
             instance = new Controlador();
         }
         return conexion;
     }
     
     //Conecta con la base de datos
-    public void conectar() throws Exception {
+    public static void conectar() throws Exception {
         conexion.conectar();
         System.out.println("Conectado");
     }

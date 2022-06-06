@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 /**
  *
  * @author josem
  */
-import Controlador.Controlador;
-import Controlador.ControladorProgramador;
+import Controlador.ControladoProgramador;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,7 +16,6 @@ import javax.swing.table.AbstractTableModel;
  */
 public  class TableModelProgramador extends AbstractTableModel {
     private static final String[] columnNames = { "","","",""};
-    
     private final LinkedList<Proyecto> list;
 
     
@@ -37,7 +30,7 @@ public  class TableModelProgramador extends AbstractTableModel {
     
     public void cargarProgramadores(String programador) throws SQLException, Exception {
         // Obtiene la lista de programadores de la BD
-        ArrayList<Proyecto> proyectos = ControladorProgramador.getInstance().obtenerProgramador(programador);
+        ArrayList<Proyecto> proyectos = ControladoProgramador.getInstance().obtenerProgramador(programador);
         System.out.println(proyectos.size());
         // Borra el contenido anterior y añade el nuevo.
         list.clear();

@@ -23,9 +23,9 @@ public class Conexion {
     String usuario;
     String pass;
     String bd;
-    Connection connection = null;
+    private Connection connection = null;
 
-    public Conexion(String hostJunco, String usuario, String pass, String bd) {
+    public Conexion(String host, String usuario, String pass, String bd) {
         this.host = host;//"192.168.0.117"
         this.usuario = usuario;//""
         this.pass = pass;//""
@@ -34,13 +34,16 @@ public class Conexion {
     }
     //Conecta con la base de datos
 
+    public Conexion() {
+
+    }
+
     public void conectar() throws SQLException {
         Calendar now = Calendar.getInstance();
         TimeZone zonahoraria = now.getTimeZone();
         this.connection = (Connection) DriverManager.getConnection(
                 "jdbc:mysql://" + this.host + "/" + this.bd + "?user=" + this.usuario + "&password=" + this.pass
                 + "&useLegacyDatetimeCode=false&serverTimeZone=" + zonahoraria.getID());
-        System.out.println("Conectado");
     }
 
     //Desconectta con la base de datos
@@ -69,9 +72,9 @@ public class Conexion {
      * @throws SQLException
      */
     public ResultSet ejecutarSelect(String consulta) throws SQLException {
+        System.out.println("NOSNOSOSNOSNOS");
         Statement stmt = connection.createStatement();
         ResultSet resultado = stmt.executeQuery(consulta);
-
         return resultado;
     }
 

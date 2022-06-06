@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import Controlador.ControladorProyecto;
@@ -13,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author josem
+ * @author alexcascos
  */
 
     public class TableModelProyecto extends AbstractTableModel {
@@ -21,9 +16,8 @@ import javax.swing.table.AbstractTableModel;
     private final LinkedList<Proyecto> list;
 
     
-    public TableModelProyecto() {
-        list = new LinkedList<>();
-        
+    public TableModelProyecto(LinkedList<Proyecto> lista) {
+        list = lista;
     }
     public Proyecto getValueAt(int rowIndex) {
         return list.get(rowIndex);
@@ -31,7 +25,7 @@ import javax.swing.table.AbstractTableModel;
     
      public  void cargarProyectosProgramador() throws SQLException, Exception {
         
-        // Obtiene la lista de proyectos de la BD
+      /*  // Obtiene la lista de proyectos de la BD
         ArrayList<Proyecto> proyectos = ControladorProyecto.getInstance().obtenerProyectos();
         System.out.println(proyectos.size());
         
@@ -40,7 +34,7 @@ import javax.swing.table.AbstractTableModel;
         list.clear();
         list.addAll(proyectos);
         // Notifica a la vista que el contenido ha cambiado para que se refresque.
-        fireTableDataChanged();
+        fireTableDataChanged();*/
     }
 
     @Override

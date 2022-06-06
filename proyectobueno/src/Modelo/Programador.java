@@ -16,51 +16,66 @@ import javax.swing.JOptionPane;
  */
 public class Programador {
 
+    
     public static int eliminarProgramador(String dni) {
-        
+        String consulta = " DELETE * FROM programador  WHERE dni='" + dni + "';";
+
+        int filas_afectadas = 0;
+
+        try {
+            Controlador.getInstance().conectar();
+            Statement stmt = Controlador.getConnection().connection.createStatement();
+            filas_afectadas = stmt.executeUpdate(consulta);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "No se ha podido llevar a cabo.");
+        } finally {
+            try {
+                Controlador.getInstance().desconectar();
+            } catch (Exception ex) {
+            }
+        }
+        return filas_afectadas;
     }
 
     public static int actualizarDatos(String dni, String nombre, String titulo, String idiomas, String estudios, String cargo) {
-        String consulta=" UPDATE ingreso SET Enfermedad='"+enfermedad+"',Medicamento='"+medicamento+
-            "' WHERE Código='"+codigo+"';";
-    
-    int filas_afectadas=0;
-    
-    try{
-         Controlador.getInstance().conectar();
-    Statement stmt =Controlador.getConnection().connection.createStatement();
-     filas_afectadas=stmt.executeUpdate(consulta);
-    
-    }catch(Exception ex) {
-            Logger.getLogger(Medico.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    finally{
+        String consulta = " UPDATE programador SET nombre ='" + nombre + "', titulo='" + titulo + "' idiomas ='" + idiomas + "', estudios='" + estudios + "', cargo='" + cargo + "' WHERE dni='" + dni + "';";
+
+        int filas_afectadas = 0;
+
         try {
-            Controlador.getInstance().desconectar();
+            Controlador.getInstance().conectar();
+            Statement stmt = Controlador.getConnection().connection.createStatement();
+            filas_afectadas = stmt.executeUpdate(consulta);
+
         } catch (Exception ex) {
-            Logger.getLogger(Medico.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido llevar a cabo.");
+        } finally {
+            try {
+                Controlador.getInstance().desconectar();
+            } catch (Exception ex) {
+            }
         }
-    }
-        
-    return filas_afectadas;
+
+        return filas_afectadas;
     }
 
     public static Boolean registrarProgramador(Programador programador) {
-        
+
         try {
             Controlador.getInstance().conectar();
 
-            String consulta = "INSERT INTO programador(dni, nombre, titulo, idiomas, estudios, cargo)"+ "VALUES('"+ programador.getDni()+ "','" + programador.getNombre()+ "','"+ programador.getTitulo()+ "','"+ programador.getIdiomas()+ "','"+ programador.getEstudios()+ "','"+ programador.getCargo()+ "')";
+            String consulta = "INSERT INTO programador(dni, nombre, titulo, idiomas, estudios, cargo)" + "VALUES('" + programador.getDni() + "','" + programador.getNombre() + "','" + programador.getTitulo() + "','" + programador.getIdiomas() + "','" + programador.getEstudios() + "','" + programador.getCargo() + "')";
 
-            Statement stmt = Controlador.getConnection().getConnection().createStatement();
+            Statement stmt = Controlador.getConnection().connection.createStatement();
             int filas_afectadas = stmt.executeUpdate(consulta);
             JOptionPane.showMessageDialog(null, "Programador registrado");
-            
+
             return true;
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Ya existe un Progrmador con ese DNI.");
             return false;
-            
+
         } finally {
             try {
                 Controlador.getInstance().desconectar();
@@ -68,7 +83,7 @@ public class Programador {
                 System.out.println(ex.getMessage());
             }
         }
-        
+
     }
     private String dni;
     private String nombre;
@@ -76,7 +91,7 @@ public class Programador {
     private String idiomas;
     private String estudios;
     private String cargo;
-    private ArrayList<Proyecto>proyecto;
+    private ArrayList<Proyecto> proyecto;
 
     public Programador(String dni, String nombre, String titulo, String idiomas, String estudios, String cargo) {
         this.dni = dni;
@@ -85,7 +100,7 @@ public class Programador {
         this.idiomas = idiomas;
         this.estudios = estudios;
         this.cargo = cargo;
-        proyecto = new ArrayList <Proyecto>();
+        proyecto = new ArrayList<Proyecto>();
     }
 
     public String getDni() {
@@ -111,7 +126,8 @@ public class Programador {
     public String getCargo() {
         return cargo;
     }
-    public ArrayList <Proyecto> getProyecto(){
+
+    public ArrayList<Proyecto> getProyecto() {
         return proyecto;
     }
 
@@ -138,32 +154,10 @@ public class Programador {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    
-    public void setProyecto(ArrayList<Proyecto>proyecto){
-        this.proyecto= proyecto;
+
+    public void setProyecto(ArrayList<Proyecto> proyecto) {
+        this.proyecto = proyecto;
     }
+
     
-     public static Boolean registrarProgramador(Programador programador) {
-        
-        try {
-            Controlador.getInstance().conectar();
-
-            String consulta = "INSERT INTO programador(dni, nombre, titulo, idiomas, estudios, cargo)"+ "VALUES('"+ programador.getDni()+ "','" + programador.getNombre()+ "','"+ programador.getTitulo()+ "','"+ programador.getIdiomas()+ "','"+ programador.getEstudios()+ "','"+ programador.getCargo()+ "')";
-
-            Statement stmt = Controlador.getConnection().getConnection().createStatement();
-            int filas_afectadas = stmt.executeUpdate(consulta);
-            JOptionPane.showMessageDialog(null, "Programadorregistrado");
-            
-            return true;
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese DNI en la base de datos.");
-            return false;
-            
-        } finally {
-            try {
-                Controlador.getInstance().desconectar();
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
 }
