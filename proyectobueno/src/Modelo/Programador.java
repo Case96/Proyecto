@@ -12,6 +12,18 @@ import java.util.ArrayList;
  * @author josem
  */
 public class Programador {
+
+    public static int eliminarProgramador(String dni) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static int actualizarDatos(String dni, String nombre, String titulo, String idiomas, String estudios, String cargo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static Boolean registrarProgramador(Programador programador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private String dni;
     private String nombre;
     private String titulo;

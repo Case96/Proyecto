@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.sql.SQLException;
@@ -13,6 +8,18 @@ import java.util.ArrayList;
  * @author josem
  */
 public class Proyecto {
+
+    public static Boolean registrarProyecto(Proyecto proyecto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static int eliminarProyecto(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static int actualizarDatos(String codigo, String tema, String duracion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private String codigo;
     private String tema;
     private String duracion;
